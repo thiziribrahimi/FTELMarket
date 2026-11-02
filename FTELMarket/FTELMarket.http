@@ -1,0 +1,44 @@
+@FTELMarket_HostAddress = http://localhost:5132
+
+### 1. Créer une catégorie
+POST {{FTELMarket_HostAddress}}/categories
+Content-Type: application/json
+
+{
+  "name": "Jeux de plateau"
+}
+
+### 2. Voir toutes les catégories
+GET {{FTELMarket_HostAddress}}/categories
+
+
+### 3. Créer un produit (lié à la catégorie ID 1)
+POST {{FTELMarket_HostAddress}}/products
+Content-Type: application/json
+
+{
+  "name": "Monopoly",
+  "description": "Jeu de société classique",
+  "price": 25.50,
+  "stock": 15,
+  "categoryId": 1
+}
+
+### 4. Voir tous les produits
+GET {{FTELMarket_HostAddress}}/products
+
+
+### 5. Modifier le produit (ex: ID 1)
+PUT {{FTELMarket_HostAddress}}/products/1
+Content-Type: application/json
+
+{
+  "name": "Monopoly Édition Deluxe",
+  "description": "Version collector",
+  "price": 35.00,
+  "stock": 5,
+  "categoryId": 1
+}
+
+### 6. Supprimer le produit (ex: ID 1)
+DELETE {{FTELMarket_HostAddress}}/products/1
