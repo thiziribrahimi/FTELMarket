@@ -1,4 +1,5 @@
 ﻿using FTELMarket.Infrastructure;
+
 using FTELMarket.Infrastructure.FTELMarket.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,23 @@ namespace FTELMarket.Controllers
             _context = context;
         }
 
+        // --- ROUTES POUR LES CATÉGORIES ---
+        [HttpPost("/categories")]
+        public IActionResult CreateCategory([FromBody] Category newCategory)
+        {
+            _context.Categories.Add(newCategory);
+            _context.SaveChanges();
+            return Ok(newCategory);
+        }
+
+        [HttpGet("/categories")]
+        public IActionResult GetCategories()
+        {
+            var categories = _context.Categories.ToList();
+            return Ok(categories);
+        }
+
+        // --- ROUTES POUR LES PRODUITS ---
         [HttpGet("/products")]
         public IActionResult GetProducts()
         {
@@ -30,13 +48,6 @@ namespace FTELMarket.Controllers
             _context.Products.Add(newProduct);
             _context.SaveChanges();
             return Ok(new { message = "Produit créé avec succès", product = newProduct });
-        }
-        [HttpPost("/categories")]
-        public IActionResult CreateCategory([FromBody] Category newCategory)
-        {
-            _context.Categories.Add(newCategory);
-            _context.SaveChanges();
-            return Ok(newCategory);
         }
 
         [HttpPut("/products/{id}")]

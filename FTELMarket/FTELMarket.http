@@ -1,4 +1,4 @@
-@FTELMarket_HostAddress = http://localhost:5132
+@FTELMarket_HostAddress = https://localhost:7252
 
 ### 1. Créer une catégorie
 POST {{FTELMarket_HostAddress}}/categories
@@ -29,7 +29,7 @@ GET {{FTELMarket_HostAddress}}/products
 
 
 ### 5. Modifier le produit (ex: ID 1)
-PUT {{FTELMarket_HostAddress}}/products/1
+PUT {{FTELMarket_HostAddress}}/products/2
 Content-Type: application/json
 
 {
